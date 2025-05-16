@@ -31,11 +31,9 @@ def shear_image(image, shear_x=0, shear_y=0):
     M = np.float32([[1, shear_x, 0], [shear_y, 1, 0]])
     return cv2.warpAffine(image, M, (cols, rows))
 
-# Load an image
 image = cv2.imread('messi.webp')
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-# Apply transformations
 translated = translate_image(image, 50, 30)
 reflected = reflect_image(image, 'y')
 rotated = rotate_image(image, 45)
@@ -44,7 +42,6 @@ cropped = crop_image(image, 50, 50, 200, 200)
 sheared_x = shear_image(image, 0, 0.1)
 sheared_y = shear_image(image, 0.2, 0)
 
-# Display all images using matplotlib
 fig, axes = plt.subplots(3, 3, figsize=(15, 10))
 axes = axes.ravel()
 
